@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>Util.js</file>
+        <file>Calibrate.svg</file>
+        <file>SettingsPage.qml</file>
+        <file>LevelPage.qml</file>
+        <file>Calibrate.png</file>
+        <file>Calibrate@2x.png</file>
+    </qresource>
+</RCC>
