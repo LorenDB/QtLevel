@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Controls.Universal 2.15
 import QtQuick.Controls.Material 2.15
 import Qt.labs.settings 1.1
 import QtSensors 5.15
@@ -11,13 +10,12 @@ import QtLevel 1.0
 import "Util.js" as Util
 
 Window {
+    id: rootWindow
+
     title: "QtLevel"
     width: 640
     height: 480
     visible: true
-
-    Universal.accent: settings.accent
-    Material.primary: settings.accent
 
     // this back key handling method comes from https://stackoverflow.com/a/67357598/12533859
     Component.onCompleted: {
@@ -29,10 +27,17 @@ Window {
         })
     }
 
+    Material.theme: settings.theme
+    Material.primary: settings.primary
+    Material.accent: settings.accent
+
     Settings {
         id: settings
 
-        property int accent: StyleHelper.theme() === "Universal" ? Universal.Emerald : Material.Indigo
+        property int theme: Material.Dark
+        property int primary: Material.Indigo
+        property int accent: Material.Pink
+        property int decimalPlaces: 0
     }
 
     SettingsPage {

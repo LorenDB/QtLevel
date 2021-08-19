@@ -15,9 +15,6 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    QSettings settings;
-    QQuickStyle::setStyle(settings.value("theme", "Universal").toString());
-
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
