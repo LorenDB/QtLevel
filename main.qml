@@ -24,6 +24,8 @@ Window {
                 event.accepted = true
                 stack.pop()
             }
+            else
+                event.accepted = false
         })
     }
 
@@ -66,7 +68,15 @@ Window {
     StackView {
         id: stack
 
-        Keys.onBackPressed: stack.pop()
+        Keys.onBackPressed: {
+            if (stack.depth > 1)
+            {
+                stack.pop()
+                event.accepted = true
+            }
+            else
+                event.accepted = false
+        }
 
         anchors.fill: parent
         initialItem: LevelPage {}

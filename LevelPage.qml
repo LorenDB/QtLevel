@@ -9,8 +9,6 @@ import QtLevel 1.0
 import "Util.js" as Util
 
 Page {
-    Keys.onBackPressed: stack.pop()
-
     DropShadow {
         source: tiltTargetArea
         anchors.fill: tiltTargetArea
