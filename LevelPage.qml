@@ -116,7 +116,7 @@ Page {
 
         active: true
         onReadingChanged: {
-            var xRot = Util.roundToDecimalPlace(reading.xRotation, 0)
+            var xRot = Util.roundToDecimalPlace(reading.xRotation, settings.decimalPlaces)
             if (xRot < -90)
                 xRotation = -180 - xRot
             else if (xRot > 90)
@@ -124,7 +124,7 @@ Page {
             else
                 xRotation = xRot
 
-            var yRot = Util.roundToDecimalPlace(reading.yRotation, 0)
+            var yRot = Util.roundToDecimalPlace(reading.yRotation, settings.decimalPlaces)
             if (yRot < -90)
                 yRotation = -180 - yRot
             else if (yRot > 90)

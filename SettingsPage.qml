@@ -45,6 +45,30 @@ Page {
 
         Label {
             font.pointSize: 22
+            text: "Level options"
+            Layout.fillWidth: true
+        }
+
+        RowLayout {
+            spacing: 10
+            Layout.fillWidth: true
+
+            Label {
+                text: "Decimal places for degrees"
+                wrapMode: Text.WordWrap
+                Layout.fillWidth: true
+            }
+
+            SpinBox {
+                from: 0
+                to: 10
+                value: settings.decimalPlaces
+                onValueChanged: settings.decimalPlaces = value
+            }
+        }
+
+        Label {
+            font.pointSize: 22
             text: "App theming options"
             Layout.fillWidth: true
         }
