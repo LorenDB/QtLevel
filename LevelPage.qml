@@ -11,11 +11,20 @@ import "Util.js" as Util
 Page {
     Keys.onBackPressed: stack.pop()
 
+    DropShadow {
+        source: tiltTargetArea
+        anchors.fill: tiltTargetArea
+        verticalOffset: 3
+        horizontalOffset: verticalOffset
+        color: "#30000000"
+        cached: true
+    }
+
     Rectangle {
         id: tiltTargetArea
 
-        property int tiltCenterPointX: x + width / 2 + (tiltSensor.yRotation * width / 180)
-        property int tiltCenterPointY: y + height / 2 + (tiltSensor.xRotation * width / 180)
+        property int tiltCenterPointX: width / 2 + (tiltSensor.yRotation * width / 180)
+        property int tiltCenterPointY: height / 2 + (tiltSensor.xRotation * width / 180)
 
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height) - 20
@@ -27,49 +36,61 @@ Page {
             else
                 return "#999999"
         }
-    }
 
-    DropShadow {
-        source: tiltTargetArea
-        anchors.fill: tiltTargetArea
-        verticalOffset: 3
-        horizontalOffset: verticalOffset
-        color: "#80000000"
-        cached: true
-    }
+        DropShadow {
+            source: bubble
+            anchors.fill: bubble
+            verticalOffset: 3
+            horizontalOffset: verticalOffset
+            color: "#80000000"
+            cached: true
+        }
 
-    Rectangle {
-        id: bubble
+        Rectangle {
+            id: bubble
 
-        color: StyleHelper.theme() === "Universal" ? Universal.accent : Material.primary
-        width: 25
-        height: width
-        radius: width / 2
-        x: tiltTargetArea.tiltCenterPointX - width / 2
-        y: tiltTargetArea.tiltCenterPointY - height / 2
+            color: Material.primary
+            width: 25
+            height: width
+            radius: width / 2
+            x: tiltTargetArea.tiltCenterPointX - width / 2
+            y: tiltTargetArea.tiltCenterPointY - height / 2
 
-        Behavior on x {
-            NumberAnimation {
-                duration: 200
-                alwaysRunToEnd: false
+            Behavior on x {
+                NumberAnimation {
+                    duration: 200
+                    alwaysRunToEnd: false
+                }
+            }
+
+            Behavior on y {
+                NumberAnimation {
+                    duration: 200
+                    alwaysRunToEnd: false
+                }
             }
         }
 
-        Behavior on y {
-            NumberAnimation {
-                duration: 200
-                alwaysRunToEnd: false
-            }
+        DropShadow {
+            source: centerTarget
+            anchors.fill: centerTarget
+            verticalOffset: 1
+            horizontalOffset: verticalOffset
+            color: "#80000000"
+            cached: true
         }
-    }
 
-    DropShadow {
-        source: bubble
-        anchors.fill: bubble
-        verticalOffset: 3
-        horizontalOffset: verticalOffset
-        color: "#80000000"
-        cached: true
+        Rectangle {
+            id: centerTarget
+
+            anchors.centerIn: parent
+            color: "transparent"
+            border.color: (tiltSensor.xRotation == 0 && tiltSensor.yRotation == 0) ? Material.accent : "black"
+            border.width: 3
+            width: bubble.width + 2 * border.width + 3
+            height: width
+            radius: width / 2
+        }
     }
 
     Label {
