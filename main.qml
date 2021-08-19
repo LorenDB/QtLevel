@@ -47,9 +47,9 @@ Window {
     Drawer {
         id: drawer
 
-        edge: Drawer.Left
-        width: parent.width * 2 / 3
-        height: parent.height
+        edge: Qt.LeftEdge
+        width: rootWindow.width * 2 / 3
+        height: rootWindow.height
         dragMargin: 10
 
         ItemDelegate {
