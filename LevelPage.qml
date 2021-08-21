@@ -22,7 +22,7 @@ Page {
         id: tiltTargetArea
 
         property int tiltCenterPointX: width / 2 + (tiltSensor.yRotation * width / 180)
-        property int tiltCenterPointY: height / 2 + (tiltSensor.xRotation * width / 180)
+        property int tiltCenterPointY: height / 2 + (tiltSensor.xRotation * height / 180)
 
         anchors.centerIn: parent
         width: Math.min(parent.width, parent.height) - 20
