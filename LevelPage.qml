@@ -38,10 +38,9 @@ Page {
         DropShadow {
             source: bubble
             anchors.fill: bubble
-            verticalOffset: 3
-            horizontalOffset: verticalOffset
+            verticalOffset: tiltSensor.xRotation * 4 / 90
+            horizontalOffset: tiltSensor.yRotation * 4 / 90
             color: "#80000000"
-            cached: true
         }
 
         Rectangle {
